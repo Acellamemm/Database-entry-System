@@ -11,6 +11,28 @@ include("connection.php");
     <style>
     </style>
     <link rel="stylesheet" href="style.css"></link>
+    <style>
+        /* Fix dropdown readability */
+            select, .modal select {
+                background: rgba(30, 30, 60, 0.9) !important; /* Dark background */
+                color: white !important; /* White text */
+                border: 1px solid rgba(255, 255, 255, 0.2);
+            }
+
+            select option {
+                background: #0f0c29; /* Dark option background */
+                color: white;
+            }
+
+            .modal select {
+                appearance: none;
+                -webkit-appearance: none;
+                padding-right: 30px; /* Space for arrow */
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23ffffff' d='M1 0l5 6 5-6z'/%3E%3C/svg%3E");
+                background-repeat: no-repeat;
+                background-position: right 12px center;
+            }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -49,6 +71,11 @@ include("connection.php");
                     <option>Hip Hop</option>
                     <option>Dubstep</option>
                     <option>Trap</option>
+                    <option>PoP</option>
+                    <option>Dubstep</option>
+                    <option>Amapiano</option>
+                    <option>Afrobeat</option>
+                    <option>Chill</option>
                     <option>Other</option>
                 </select>
                 <label for="email">Email Address</label>
@@ -59,7 +86,7 @@ include("connection.php");
                 <input type="password" id="password" name="password" placeholder="At least 8 characters" minlength="8" required>
                 <div class="password-strength" id="passwordStrength"></div>
                 <button type="submit" class="submit-btn" name="submit">Create DJ Account</button>
-            </form>
+            </form><br>Have an account? <a href="login.php" style="color: blue;">Log in here</a>
         </div>
     </div>
     <script>
