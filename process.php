@@ -23,7 +23,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         else{
             $hash = password_hash($password, PASSWORD_DEFAULT);
             // Include DJ-specific fields: dj_alias, genre, equipment
-            $sql = "INSERT INTO users (firstname,lastname,email,password,dj_alias,genre,equipment) VALUES(?,?,?,?,?,?,?)";
+            $sql = "INSERT INTO users (fname,lname,email,password,dj_alias,genre,equipment) VALUES(?,?,?,?,?,?,?)";
             $stmt = mysqli_prepare($conn, $sql);
             mysqli_stmt_bind_param($stmt, "sssssss", $fname, $lname, $email, $hash, $dj_alias, $genre, $equipment);
 

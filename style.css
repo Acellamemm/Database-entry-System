@@ -1,7 +1,33 @@
 :root{--bg1:#0f0c29;--bg2:#302b63;--accent1:#ff416c;--accent2:#ff4b2b}
         *{box-sizing:border-box;margin:0;padding:0}
-        body{font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;min-height:100vh;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at bottom right, rgba(255,255,255,0.03), transparent 20%), linear-gradient(135deg,var(--bg1),var(--bg2));color:#fff;padding:20px}
-        .container{width:100%;max-width:720px;background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));border-radius:12px;padding:28px;box-shadow:0 12px 40px rgba(2,6,23,0.6);overflow:hidden;display:grid;grid-template-columns:1fr 380px;gap:24px}
+        body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    padding: 40px 20px; /* Space around the container to show the crowd */
+    background: 
+        radial-gradient(ellipse at bottom right, rgba(255,255,255,0.03), transparent 20%),
+        url('https://i.iheart.com/v3/re/new_assets/67f563a2ff34d3ca60baa32b') center/cover no-repeat fixed;
+    background-color: var(--bg1); /* Fallback dark purple if image slow */
+}
+        .container {
+    width: 100%;
+    max-width: 720px;
+    background: rgba(15, 12, 41, 0.92); /* Strong purple base */
+    border-radius: 20px; /* Softer rounded like mockup */
+    padding: 40px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 40px;
+    backdrop-filter: blur(15px); /* Heavy glass blur for that frosted effect */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
         .left{padding:10px 6px}
         .brand{display:flex;align-items:center;gap:12px;margin-bottom:6px}
         .logo{font-size:30px;font-weight:800;letter-spacing:1px;display:flex;align-items:center;gap:10px}
@@ -28,3 +54,87 @@
         .password-strength.strong{background:#022b06;color:#b8ffcf;display:block}
         .note{font-size:13px;color:#cbd5e1;margin-top:8px}
         @media(max-width:880px){.container{grid-template-columns:1fr;max-width:480px}.right{order:3}}
+        .bg-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -2; /* Behind everything */
+}
+
+.bg-image {
+    width: 100%;
+    height: 120%; /* Extra height for slide */
+    object-fit: cover;
+    animation: slideUp 45s linear infinite alternate;
+}
+
+.bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(15, 12, 41, 0.92), rgba(48, 43, 99, 0.85));
+    z-index: -1;
+}
+
+@keyframes slideUp {
+    0% { transform: translateY(20%); } /* Starts lower */
+    100% { transform: translateY(-20%); } /* Slides up */
+}
+        @keyframes slideUp {
+        0%   { background-position: center 100%; } /* Starts hidden at bottom */
+        100% { background-position: center 0%; }   /* Slides all the way up */
+        }
+/* Wider Foundation Container */
+.content-wrapper {
+    position: relative;
+    z-index: 2;
+    max-width: 1600px; /* Much wider — uses full screen on large monitors */
+    width: 95%; /* Responsive fallback */
+    margin: 90px auto 60px;
+    padding: 50px 40px;
+    background: rgba(15, 12, 41, 0.93);
+    backdrop-filter: blur(18px);
+    border-radius: 28px;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Wider Mix Grid — better use of space */
+.mix-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); /* Bigger cards */
+    gap: 35px;
+}
+
+/* Wider DJ List */
+.dj-list {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1400px) {
+    .content-wrapper {
+        max-width: 1200px;
+        padding: 40px 30px;
+    }
+    .mix-grid {
+        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    }
+}
+
+@media (max-width: 1000px) {
+    .content-wrapper {
+        margin: 80px auto 40px;
+        padding: 30px 20px;
+        border-radius: 20px;
+    }
+    .mix-grid {
+        grid-template-columns: 1fr;
+    }
+}
